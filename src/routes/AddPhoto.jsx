@@ -5,7 +5,7 @@ const AddPhoto = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [captions, setCaptions] = useState("");
   const [secret, setSecret] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const addPhoto = (e) => {
@@ -28,6 +28,7 @@ const AddPhoto = () => {
       console.log(data)
       {secret !== "password" ? setError(data.error) : navigate({pathname : "/photos"})}
     })
+    .catch((err) => setError(true))
     // TODO: answer here
   };
 
