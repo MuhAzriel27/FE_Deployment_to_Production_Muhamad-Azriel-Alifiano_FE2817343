@@ -8,7 +8,7 @@ const Photos = () => {
   const [submited, setSubmited] = useState("");
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   const deletePhoto = (id) => {
     fetch(`https://gallery-app-server.vercel.app/photos/${id}`, {
@@ -17,8 +17,8 @@ const Photos = () => {
     .then((response) => response.json())
     .then((json) => {
       setPhotos(photos.filter(item => item.id !== id))
-      
     })
+    .catch((error) => setError(true))
     // TODO: answer here
   };
 
